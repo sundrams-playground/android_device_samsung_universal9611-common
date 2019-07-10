@@ -57,6 +57,7 @@ vendor.powerhal.disp.idle_support=false
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
 ## Media
+debug.stagefright.c2inputsurface=-1
 media.c2.hal.selection=aidl
 
 ## Metadata Encryption
