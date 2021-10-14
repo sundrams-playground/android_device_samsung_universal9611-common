@@ -60,7 +60,6 @@ ro.surface_flinger.has_HDR_display=true
 ro.surface_flinger.use_color_management=true
 
 ## Samsung specific
-ro.product_ship=true
 ro.vendor.sec.radio.def_network=10,10
 
 ## RIL
