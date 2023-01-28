@@ -61,8 +61,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service_64 \
-    libsensorndkbridge \
-    GCameraGoPrebuilt
+    libsensorndkbridge
 
 # ConfigStore
 PRODUCT_PACKAGES += \
