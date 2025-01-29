@@ -53,10 +53,10 @@ PRODUCT_COPY_FILES += \
 # Biometric Fingerprint
 ifeq ($(TARGET_HAS_FOD),true)
 PRODUCT_PACKAGES += \
-     android.hardware.biometrics.fingerprint@2.3-service-samsung.universal9611
+     android.hardware.biometrics.fingerprint-service.samsung.universal9611
 else
 PRODUCT_PACKAGES += \
-     android.hardware.biometrics.fingerprint@2.3-service.samsung
+     android.hardware.biometrics.fingerprint-service.samsung
 
 PRODUCT_COPY_FILES += \
      $(COMMON_PATH)/configs/keylayout/uinput-sec-fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-sec-fp.kl
@@ -242,6 +242,8 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-lineage
 ifneq ($(TARGET_HAS_FOD),true)
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-fod
+else
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-nofod
 endif
 
