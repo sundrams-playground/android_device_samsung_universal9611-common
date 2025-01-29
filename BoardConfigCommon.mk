@@ -99,7 +99,6 @@ TARGET_USES_VULKAN := true
 
 ## Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 ## Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
