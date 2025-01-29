@@ -51,10 +51,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
 
 # Biometric Fingerprint
-ifeq ($(TARGET_HAS_FOD),true)
-PRODUCT_PACKAGES += \
-     android.hardware.biometrics.fingerprint-service.samsung.universal9611
-else
+ifeq ($(TARGET_HAS_FOD),false)
 PRODUCT_PACKAGES += \
      android.hardware.biometrics.fingerprint-service.samsung
 
@@ -241,9 +238,7 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-lineage
-ifneq ($(TARGET_HAS_FOD),true)
-DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-fod
-else
+ifneq ($(TARGET_HAS_FOD),false)
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-nofod
 endif
 
@@ -347,14 +342,6 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.samsung-multihal
-
-ifeq ($(TARGET_HAS_FOD),true)
-PRODUCT_PACKAGES += \
-    sensors.samsung
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
-endif
 
 # Shims
 PRODUCT_PACKAGES += \
