@@ -53,7 +53,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_TAGS_OFFSET := 0x00000100
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-TARGET_KERNEL_SOURCE := kernel/samsung/universal9611
 
 BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
@@ -64,9 +63,6 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
 
-# Kernel config
-TARGET_KERNEL_CONFIG := exynos9611-$(TARGET_DEVICE)_defconfig
-
 # Broken Build Rules
 BUILD_BROKEN_DUP_RULES := true
 
@@ -76,11 +72,11 @@ TARGET_SCREEN_DENSITY := 420
 
 ## DTBO
 BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_DTBO_CFG := $(COMMON_PATH)/configs/kernel/$(TARGET_DEVICE).cfg
 
-## DTB
+## DTB 
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_DTB_CFG := $(COMMON_PATH)/configs/kernel/exynos9611.cfg
+#BOARD_INCLUDE_DTB_IN_BOOTIMG := true #To Do: recovery might not boot after removing this
+
 
 ## Camera
 $(call soong_config_set,samsungCameraVars,usage_64bit,true)
@@ -95,7 +91,9 @@ TARGET_USES_VULKAN := true
 
 ## Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_NO_GCC := true
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_NO_KERNEL := false
 
 ## Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
