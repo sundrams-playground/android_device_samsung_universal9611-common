@@ -65,7 +65,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 #BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
 
 # Kernel config
-TARGET_KERNEL_CONFIG := exynos9611-$(TARGET_DEVICE)_defconfig
+TARGET_KERNEL_CONFIG := m30s_defconfig
 
 # Broken Build Rules
 BUILD_BROKEN_DUP_RULES := true
