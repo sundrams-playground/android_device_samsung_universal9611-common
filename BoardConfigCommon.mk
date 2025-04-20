@@ -40,7 +40,6 @@ $(call soong_config_set,exynos_audio,PROXY_LIBRARY,//device/samsung/universal961
 BOARD_HAVE_BLUETOOTH_SLSI := true
 
 ## Boot Image
-BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_DTB_OFFSET := 0x00000000
 BOARD_KERNEL_BASE := 0x10000000
@@ -74,10 +73,6 @@ TARGET_SCREEN_DENSITY := 420
 ## DTBO
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_DTBO_CFG := $(COMMON_PATH)/configs/kernel/$(TARGET_DEVICE).cfg
-
-## DTB
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_DTB_CFG := $(COMMON_PATH)/configs/kernel/exynos9611.cfg
 
 ## Camera
 $(call soong_config_set,samsungCameraVars,usage_64bit,true)
@@ -119,12 +114,6 @@ ODM_MANIFEST_HCESIMESE_FILES := $(ODM_MANIFEST_NFC_FILE)
 ODM_MANIFEST_DISABLED_FILES := $(COMMON_PATH)/configs/nfc/odm_nfc_manifest_disabled_$(PREFIX).xml
 endif
 
-## Partitions
-BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
-BOARD_USES_METADATA_PARTITION := true
-BOARD_ROOT_EXTRA_FOLDERS := efs
-BOARD_ROOT_EXTRA_SYMLINKS := /efs:/factory
-
 ## Platform
 BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := universal9611
@@ -138,7 +127,6 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 ## Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/configs/init/fstab.exynos9611
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 
 ## Releasetools
