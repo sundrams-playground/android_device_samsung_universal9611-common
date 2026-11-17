@@ -78,8 +78,8 @@ vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 ro.telephony.default_network=10,10
 ro.config.vc_call_vol_steps=10
 
-# Set csc support in OMX
-# If not set or set to 0, OMX will only use BT.601 colorspace.
+# Set csc support in gralloc
+# If not set or set to 0, only the BT.601 colorspace is used.
 ro.vendor.cscsupported=1
 
 ## Vibrator HAL
