@@ -77,6 +77,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
      charger_res_images_vendor
 
+# Codec2
+PRODUCT_PACKAGES += \
+    samsung.hardware.media.c2-service
+
+PRODUCT_PACKAGES += \
+    libExynosC2H263Dec \
+    libExynosC2H263Enc \
+    libExynosC2H264Dec \
+    libExynosC2H264Enc \
+    libExynosC2HevcDec \
+    libExynosC2HevcEnc \
+    libExynosC2Mpeg4Dec \
+    libExynosC2Mpeg4Enc \
+    libExynosC2Vp8Dec \
+    libExynosC2Vp8Enc \
+    libExynosC2Vp9Dec \
+    libExynosC2Vp9Enc
+
+PRODUCT_PACKAGES += \
+    codec2.vendor.base.policy \
+    codec2.vendor.ext.policy
+
 # DAP
 PRODUCT_PACKAGES += \
     SamsungDAP
@@ -166,6 +188,7 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    $(COMMON_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
     $(COMMON_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(COMMON_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
