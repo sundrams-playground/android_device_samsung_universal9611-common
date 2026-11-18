@@ -1,0 +1,4 @@
+# The SLSI NFC HAL is started with class hal. On device variants without
+# an NFC chip (ro.boot.product.hardware.sku=disabled), stop it again.
+on boot && property:ro.boot.product.hardware.sku=disabled
+    stop vendor.sec_nfc_hal_service
