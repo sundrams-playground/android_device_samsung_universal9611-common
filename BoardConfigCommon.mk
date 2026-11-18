@@ -153,7 +153,7 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
 
 ## Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/configs/init/fstab.exynos9611
+TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab.exynos9611
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 
 ## Releasetools
