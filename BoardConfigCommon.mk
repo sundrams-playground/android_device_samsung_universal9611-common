@@ -173,6 +173,7 @@ BOARD_SEPOLICY_TEE_FLAVOR := teegris
 include device/samsung_slsi/sepolicy/sepolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor-legacy-system
 
 # Vibrator
 $(call soong_config_set_bool,samsungVibratorVars,duration_amplitude,true)

@@ -30,6 +30,10 @@ BOARD_BOOTIMG_HEADER_VERSION := 1
 ## Inherit common configuration
 include $(COMMON_PATH)/BoardConfigCommon.mk
 
+# SELinux: system is the retrofit super partition, omr is /metadata
+BOARD_VENDOR_SEPOLICY_DIRS := $(filter-out $(COMMON_PATH)/sepolicy/vendor-legacy-system,$(BOARD_VENDOR_SEPOLICY_DIRS))
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor-pie
+
 ## Dynamic Partitions (retrofit on the system block device)
 BOARD_SUPER_PARTITION_METADATA_DEVICE := system
 
