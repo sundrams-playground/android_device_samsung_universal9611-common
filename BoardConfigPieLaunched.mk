@@ -37,6 +37,8 @@ BOARD_SUPER_PARTITION_METADATA_DEVICE := system
 # Header v1 boot images can't carry a DTB, build a standalone dtb.img
 # (with AVB hash footer) and ship it as a radio image.
 BOARD_CUSTOM_DTBIMG_MK := $(COMMON_PATH)/configs/kernel/dtbimage.mk
+# Pie bootloaders match the dtb entry on the stock hw rev range (0x0-0xff)
+BOARD_DTB_CFG := $(COMMON_PATH)/configs/kernel/exynos9611-pie.cfg
 BOARD_DTBIMG_PARTITION_SIZE := 8388608
 BOARD_PACK_RADIOIMAGES += dtb.img
 
