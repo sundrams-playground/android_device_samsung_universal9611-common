@@ -5,3 +5,38 @@ prebuilt_etc {
    sub_dir: "init",
    vendor: true,
 }
+
+soong_config_module_type {
+    name: "fstab_metadata_partition",
+    module_type: "genrule_defaults",
+    config_namespace: "fstab_universal9611",
+    bool_variables: ["use_omr_as_metadata"],
+    properties: ["cmd"],
+}
+
+// Pie launched devices have no metadata partition, use omr instead.
+fstab_metadata_partition {
+    name: "fstab_metadata_partition_defaults",
+    soong_config_variables: {
+        use_omr_as_metadata: {
+            cmd: "sed -e 's/@metadata@/omr/' $(in) > $(out)",
+            conditions_default: {
+                cmd: "sed -e 's/@metadata@/metadata/' $(in) > $(out)",
+            },
+        },
+    },
+}
+
+genrule {
+    name: "gen_fstab.exynos9611",
+    defaults: ["fstab_metadata_partition_defaults"],
+    srcs: ["fstab.exynos9611.in"],
+    out: ["fstab.exynos9611"],
+}
+
+prebuilt_etc {
+    name: "fstab.exynos9611",
+    src: ":gen_fstab.exynos9611",
+    vendor: true,
+    ramdisk_available: true,
+}
