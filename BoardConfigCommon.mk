@@ -124,7 +124,7 @@ TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_ODM := odm
 
-include vendor/lineage/config/BoardConfigReservedSize.mk
+include vendor/halcyon/config/BoardConfigReservedSize.mk
 
 ifeq (,$(filter true, $(WITHOUT_RESERVED_SIZE) $(WITH_GMS)))
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 838860800
