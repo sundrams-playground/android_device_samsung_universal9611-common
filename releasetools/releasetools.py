@@ -1,6 +1,6 @@
 #!/bin/env python3
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2020-2026 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,16 @@
 import common
 import re
 
+def IsRetrofitDevice(info):
+  # Pie launched devices use the system block device as super
+  return info.info_dict.get("super_metadata_device", "super") not in ("", "super")
+
+def FullOTA_InstallBegin(info):
+  if IsRetrofitDevice(info):
+    AddImage(info, "IMAGES", "super_empty.img", "/tmp/super_empty.img", False)
+    info.script.AppendExtra('universal9611.retrofit_dynamic_partitions();')
+  return
+
 def FullOTA_InstallEnd(info):
   OTA_InstallEnd(info)
   return
@@ -26,13 +36,17 @@ def IncrementalOTA_InstallEnd(info):
   OTA_InstallEnd(info)
   return
 
-def AddImage(info, dir, basename, dest):
+def AddImage(info, dir, basename, dest, printInfo=True):
   data = info.input_zip.read(dir + "/" + basename)
   common.ZipWriteStr(info.output_zip, basename, data)
-  info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
+  if printInfo:
+    info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
 
 def OTA_InstallEnd(info):
+  # Pie launched devices have a dedicated dtb partition
+  if "RADIO/dtb.img" in info.input_zip.namelist():
+    AddImage(info, "RADIO", "dtb.img", "/dev/block/by-name/dtb")
   AddImage(info, "IMAGES", "dtbo.img", "/dev/block/by-name/dtbo")
   AddImage(info, "IMAGES", "vbmeta.img", "/dev/block/by-name/vbmeta")
   return
