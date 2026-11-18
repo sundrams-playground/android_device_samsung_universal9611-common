@@ -1,0 +1,20 @@
+//
+// Copyright (C) 2022-2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    name: "librecovery_updater_universal9611",
+    srcs: [
+        "recovery_updater.cpp",
+    ],
+    header_libs: ["libbase_headers"],
+    include_dirs: [
+        "bootable/deprecated-ota/edify/include",
+        "bootable/recovery",
+        "bootable/recovery/otautil/include",
+        "system/libziparchive/include",
+    ],
+    static_libs: ["liblp"],
+}
