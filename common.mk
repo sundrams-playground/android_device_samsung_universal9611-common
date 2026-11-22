@@ -183,6 +183,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light-service.samsung
 
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay-service.samsung-exynos
+
 # Lineage Health
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default

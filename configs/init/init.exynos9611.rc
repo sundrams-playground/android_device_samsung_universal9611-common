@@ -495,12 +495,15 @@ on fs
     chown system media_rw /sys/class/mdnie/mdnie/mode
     chown system media_rw /sys/class/mdnie/mdnie/scenario
     chown system system /sys/class/mdnie/mdnie/accessibility
-    chown system system /sys/class/mdnie/mdnie/sensorRGB
+    # sensorRGB stays root-owned on purpose: the kernel ignores it outside
+    # AUTO + browser/ebook, so the LiveDisplay HAL must not register colour
+    # calibration. Lineage then uses its colour-transform fallback for it.
     chown system system /sys/class/mdnie/mdnie/whiteRGB
     chown system system /sys/class/mdnie/mdnie/night_mode
     chown system system /sys/class/mdnie/mdnie/light_notification
     chown system system /sys/class/mdnie/mdnie/color_lens
     chown system system /sys/class/mdnie/mdnie/bypass
+    chown system system /sys/class/mdnie/mdnie/lux
 
 # Sensors permissions
 # Permissions for Fingerprint sensor
